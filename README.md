@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://github.com/travisvn/awesome-claude-skills">
-    <img alt="Awesome Claude Skills" src="https://pc0o4oduww.ufs.sh/f/crfz5GypRfo0lI4924gMSJKLY6297aVP0zZpilXBvqTbDyrs"/>
-  </a>
-</p>
-
 # Awesome Claude Skills
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
@@ -16,7 +10,7 @@
 
 They are specialized folders containing instructions, scripts, and resources that Claude dynamically discovers and loads when relevant to tasks.
 
-### How Skills Work
+## How Skills Work
 
 Skills employ a **progressive disclosure architecture** for efficiency:
 
@@ -133,6 +127,7 @@ _More community skills coming soon! Submit a PR to add your skill._
 ### Tools
 
 - **[yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)** - Convert documentation websites into Claude Skills
+- **[claude-hud](https://github.com/jarrodwatts/claude-hud)** - A Claude Code plugin that shows what's happening — context usage, active tools, running agents, and todo progress. Always visible below your input.
 
 ## ✏️ Creating Your First Skill
 
@@ -226,6 +221,7 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 - [anthropics/skills](https://github.com/anthropics/skills) - Official public repository for Skills
 - [Claude Cookbooks - Skills](https://github.com/anthropics/claude-cookbooks/tree/main/skills) - Example notebooks and tutorials
 
+---
 ## 📅 Recent Updates
 
 ### November 2025
