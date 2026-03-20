@@ -128,6 +128,10 @@ _More community skills coming soon! Submit a PR to add your skill._
 
 - **[yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers)** - Convert documentation websites into Claude Skills
 - **[claude-hud](https://github.com/jarrodwatts/claude-hud)** - A Claude Code plugin that shows what's happening — context usage, active tools, running agents, and todo progress. Always visible below your input.
+- **[Claude-to-IM](https://github.com/op7418/Claude-to-IM-skill)** - Bridge Claude Code / Codex to IM platforms — chat with AI coding agents from Telegram, Discord, Feishu/Lark, or QQ.
+
+### UI
+- **[CodePilot](https://github.com/op7418/CodePilot)** - A desktop GUI for Claude Code — chat, code, and manage projects visually. Built with Electron + Next.js.
 
 ## ✏️ Creating Your First Skill
 
