@@ -1,14 +1,266 @@
-# Awesome Claude Skills
+# Awesome Agent Harness
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Last Updated](https://img.shields.io/badge/updated-Feb%202026-green.svg)]()
+[![Last Updated](https://img.shields.io/badge/updated-Mar%202026-green.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-> A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows
+> A curated GitHub map of projects for building, operating, and governing agent harnesses, while preserving the original Claude Skills catalog from this repository.
 
-**Claude Skills** teach Claude how to **perform tasks in a repeatable way**
+An `agent harness` is the control plane around an agent:
 
-They are specialized folders containing instructions, scripts, and resources that Claude dynamically discovers and loads when relevant to tasks.
+- prompt and context scaffolding
+- planning, state, checkpoints, and recovery
+- tool and protocol integration
+- isolated execution environments
+- verification, reviewability, and guardrails
+
+This README now has **two layers**:
+
+1. an `Agent Harness` ecosystem map and GitHub project index
+2. the original `Claude Skills` catalog, preserved in full
+
+## Scope
+
+This list focuses on **high-signal, open-source GitHub projects** that are directly useful when building an agent harness.
+
+It does **not** attempt a mathematically exhaustive list of every repo in the ecosystem. That is no longer practical, especially for:
+
+- MCP servers
+- individual skill packs
+- one-off app wrappers around existing agents
+
+For long-tail discovery, this README points to registries and official indexes.
+
+## Search Method
+
+GitHub-wide search terms used in this sweep included:
+
+```text
+agent harness
+harness engineering
+coding agent
+agent runtime
+stateful agent
+model context protocol
+mcp server
+agent skills
+browser agent
+agent eval
+agent guardrails
+secure agent sandbox
+```
+
+Notes:
+
+- This sweep was updated on **March 22, 2026**.
+- Star counts in the `~100-star` section below are **GitHub API snapshots from March 22, 2026** and will change over time.
+- For this README, `~100 stars` means **roughly 80-160 stars**, because exact 100-star filtering is too unstable to be useful in practice.
+- As of **March 22, 2026**, `OpenDevin/OpenDevin` has effectively moved to [All-Hands-AI/OpenHands](https://github.com/All-Hands-AI/OpenHands).
+- As of **March 22, 2026**, `openclaw/openclaw` resolves to [clawdbot/clawdbot](https://github.com/clawdbot/clawdbot).
+
+## If You Only Read Five Repos
+
+- [openai/codex](https://github.com/openai/codex) - terminal-native coding agent shell
+- [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) - explicit open-source harness with planning, filesystem, subagents, MCP, and HITL
+- [modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol) - the protocol layer that now defines most tool integration work
+- [github/github-mcp-server](https://github.com/github/github-mcp-server) - the most important MCP server for coding workflows
+- [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) - simple, practical evals and red-teaming for agent outputs
+
+## Ecosystem Map
+
+### Harness-First Runtimes and Coding Agents
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [openai/codex](https://github.com/openai/codex) | Lightweight coding agent for the terminal; a strong reference for CLI-native harness design and repo-driven workflows. |
+| [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) | One of the clearest open-source `agent harness` repos: planning, filesystem, shell, subagents, summarization, MCP, and HITL. |
+| [anomalyco/opencode](https://github.com/anomalyco/opencode) | Open-source coding agent with built-in `build` and `plan` modes, provider-agnostic design, and strong TUI ergonomics. |
+| [All-Hands-AI/OpenHands](https://github.com/All-Hands-AI/OpenHands) | End-to-end software engineering agent platform; useful as a larger harness/control-plane reference. |
+| [Aider-AI/aider](https://github.com/Aider-AI/aider) | Terminal pair-programming agent; a mature reference for repo-aware edit/apply/test loops. |
+| [continuedev/continue](https://github.com/continuedev/continue) | Open-source CLI and IDE agent system with TUI and headless modes for background workflows. |
+| [cline/cline](https://github.com/cline/cline) | IDE-native autonomous coding agent with explicit human approval, browser use, checkpoints, and MCP extension points. |
+| [block/goose](https://github.com/block/goose) | Extensible local agent that can install, execute, edit, and test with any LLM; good for MCP-heavy local harness patterns. |
+| [SWE-agent/SWE-agent](https://github.com/SWE-agent/SWE-agent) | Research-heavy software engineering agent that stays useful as a harness reference for tool bundles, configs, and benchmarkable runs. |
+| [SWE-agent/mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) | Minimal baseline harness showing how far a simple bash-first loop can go without a giant scaffold. |
+| [clawdbot/clawdbot](https://github.com/clawdbot/clawdbot) | OpenClaw's current repo; useful if you care about always-on personal agent control planes, skills, channels, and device actions. |
+
+### Frameworks, Orchestration, and Agent Protocols
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Low-level orchestration framework for long-running, stateful, controllable agents. |
+| [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | Lightweight multi-agent workflow SDK with handoffs, sessions, tracing, and guardrails. |
+| [microsoft/autogen](https://github.com/microsoft/autogen) | Mature multi-agent framework with event-driven runtime and a large extension ecosystem. |
+| [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) | Lean role-based multi-agent orchestration framework with a big ecosystem and many examples. |
+| [agno-agi/agno](https://github.com/agno-agi/agno) | Full-stack agent system with runtime, control plane, memory, knowledge, MCP, A2A, and eval hooks. |
+| [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) | Strong choice for typed, production-grade agent workflows with durable execution and approval hooks. |
+| [letta-ai/letta](https://github.com/letta-ai/letta) | Stateful agent platform focused on advanced memory and persistent agent identity over time. |
+| [lastmile-ai/mcp-agent](https://github.com/lastmile-ai/mcp-agent) | MCP-native framework that combines simple workflow patterns with durable execution. |
+| [a2aproject/A2A](https://github.com/a2aproject/A2A) | Open Agent2Agent protocol for agent interoperability beyond tool calling. |
+| [anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) | SDK for embedding Claude Agent / Claude Code style behavior into programmable workflows. |
+
+### Skills and Reusable Behavior Packs
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [anthropics/skills](https://github.com/anthropics/skills) | Official public repo for Claude skills, skill examples, templates, and the skill spec. |
+| [openai/skills](https://github.com/openai/skills) | Codex-focused skills catalog; useful for understanding the cross-agent skills pattern. |
+| [vercel-labs/skills](https://github.com/vercel-labs/skills) | Cross-agent skills CLI that installs skills into Codex, Claude Code, Cursor, OpenCode, OpenClaw, and more. |
+| [obra/superpowers](https://github.com/obra/superpowers) | A full workflow system built from composable skills, plans, subagents, worktrees, and review loops. |
+| [trailofbits/skills](https://github.com/trailofbits/skills) | Security-heavy skill marketplace for audits, CodeQL, Semgrep, diff review, and secure dev workflows. |
+| [expo/skills](https://github.com/expo/skills) | Official Expo team skill pack for building, deploying, and debugging Expo apps. |
+
+### MCP and Capability Fabric
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol) | The MCP spec and docs repo; the foundation for modern tool, resource, and prompt integration. |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | Official reference servers plus the gateway into the wider MCP registry and ecosystem. |
+| [modelcontextprotocol/typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) | Official TypeScript SDK for writing MCP clients and servers. |
+| [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | Official Python SDK for MCP clients and servers. |
+| [github/github-mcp-server](https://github.com/github/github-mcp-server) | The most important coding-focused MCP server: repos, files, issues, PRs, Actions, security, and more. |
+| [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) | Browser automation via MCP using accessibility snapshots instead of pixel-only interaction. |
+| [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | Broad community index for MCP servers across every domain. |
+| [CodeAlive-AI/codealive-mcp](https://github.com/CodeAlive-AI/codealive-mcp) | A strong example of an MCP-first context engine for large codebases. |
+
+### Memory, State, and Context Systems
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [letta-ai/letta](https://github.com/letta-ai/letta) | Best viewed as a memory-first platform for persistent, stateful agents. |
+| [mem0ai/mem0](https://github.com/mem0ai/mem0) | Universal memory layer for user, session, and agent state. |
+| [getzep/graphiti](https://github.com/getzep/graphiti) | Real-time knowledge graphs for agent memory, retrieval, and historical reasoning; also includes an MCP server. |
+| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Important here for checkpointing, resumability, and explicit state graphs. |
+| [CodeAlive-AI/codealive-mcp](https://github.com/CodeAlive-AI/codealive-mcp) | Worth revisiting here as a context-engine layer rather than just an MCP endpoint. |
+
+### Browser, Sandbox, and Execution Substrate
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [browser-use/browser-use](https://github.com/browser-use/browser-use) | Makes websites accessible to agents; useful for end-to-end verification and browser action loops. |
+| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | Secure isolated cloud sandboxes for running AI-generated code. |
+| [SWE-agent/SWE-ReX](https://github.com/SWE-agent/SWE-ReX) | Runtime interface for sandboxed shell execution, local or remote, with strong parallelization support. |
+| [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) | Also belongs here as the cleanest browser substrate for MCP-native agents. |
+| [clawdbot/clawdbot](https://github.com/clawdbot/clawdbot) | Interesting if your harness needs channels, device actions, voice, and always-on local control. |
+
+### Observability, Evals, and Guardrails
+
+| Project | Why it matters for agent harnesses |
+| --- | --- |
+| [langfuse/langfuse](https://github.com/langfuse/langfuse) | Full LLM engineering platform for tracing, evals, prompts, datasets, and production debugging. |
+| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Open-source observability and evaluation platform for tracing and troubleshooting agent runs. |
+| [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Practical eval, CI, red-teaming, and vulnerability scanning for prompts, RAG, and agents. |
+| [truera/trulens](https://github.com/truera/trulens) | Evaluation and tracking framework for LLM applications and agents. |
+| [invariantlabs-ai/invariant](https://github.com/invariantlabs-ai/invariant) | Rule-based guardrails layer that can sit between your app and MCP or LLM providers. |
+| [invariantlabs-ai/mcp-scan](https://github.com/invariantlabs-ai/mcp-scan) | MCP-specific security scanner and proxy for inspection, logging, and runtime enforcement. |
+
+## Emerging ~100-Star Harness Projects
+
+These projects were extracted from GitHub searches for AI-related repos with **roughly 80-160 stars** and then filtered for clear relevance to harness layers.
+
+### Prompt Scaffold, Planning, and Workflow Shaping
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [trevor-nichols/agentrules-architect](https://github.com/trevor-nichols/agentrules-architect) | 109 | Prompt scaffold / planning | Generates `AGENTS.md` / `CLAUDE.md` style rule files plus ExecPlan-oriented harness structure. |
+| [Codename-Inc/spectre](https://github.com/Codename-Inc/spectre) | 116 | Workflow scaffold | Encodes `/Scope -> /Plan -> /Execute -> /Clean -> /Test -> /Evaluate` as a reusable coding workflow harness. |
+| [sudocode-ai/sudocode](https://github.com/sudocode-ai/sudocode) | 248 | Repo workflow layer | Slightly above the target range, but useful as a repo-local orchestration layer that lives with the codebase itself. |
+
+### Runtime, Orchestration, and Control Plane
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [SethGammon/Citadel](https://github.com/SethGammon/Citadel) | 125 | Orchestration runtime | Claude Code team harness with routing, worktrees, lifecycle hooks, circuit breakers, and campaign persistence. |
+| [go-a2a/adk-go](https://github.com/go-a2a/adk-go) | 99 | Agent runtime / deployment | Go toolkit for building, evaluating, and deploying controlled agent systems. |
+| [Mercor-Intelligence/archipelago](https://github.com/Mercor-Intelligence/archipelago) | 134 | Execution harness / eval | Harness for running and evaluating AI agents against RL environments. |
+| [jpicklyk/task-orchestrator](https://github.com/jpicklyk/task-orchestrator) | 170 | Task orchestration | Slightly above the target range, but notable for persistent work tracking and context storage across sessions and agents. |
+
+### Memory, State, and Long-Running Context
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [srikanthbellary/openstinger](https://github.com/srikanthbellary/openstinger) | 114 | Memory harness | Explicitly positions itself as a portable memory harness for agents. |
+| [aayoawoyemi/Ori-Mnemos](https://github.com/aayoawoyemi/Ori-Mnemos) | 139 | Persistent memory | Local-first persistent memory system built specifically for agentic workflows. |
+| [AGI-is-going-to-arrive/Memory-Palace](https://github.com/AGI-is-going-to-arrive/Memory-Palace) | 211 | Long-term memory OS | Above the target range, but highly relevant as a memory operating system concept for AI agents. |
+
+### Capability Fabric and MCP-Adjacent Layers
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [Flux159/mcp-chat](https://github.com/Flux159/mcp-chat) | 134 | MCP client / testing | Useful for testing and evaluating MCP servers and agent setups from the client side. |
+| [cs50victor/claude-code-teams-mcp](https://github.com/cs50victor/claude-code-teams-mcp) | 219 | MCP orchestration | Above the target range, but a good example of using MCP to expose team orchestration patterns to harnesses. |
+| [amxv/mcp-manager](https://github.com/amxv/mcp-manager) | 285 | MCP management UI | Above the target range, but increasingly relevant as harnesses need GUI-level MCP fleet management. |
+
+### Sandbox, Isolation, and Safe Execution
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [llm-platform-security/SecGPT](https://github.com/llm-platform-security/SecGPT) | 109 | Isolation architecture | Focuses on execution isolation for LLM-based agent systems. |
+| [Cloudgeni-ai/infrastructure-agents-guide](https://github.com/Cloudgeni-ai/infrastructure-agents-guide) | 125 | Safe operations | Guide repo centered on architecture, sandboxing, credentials, change control, and observability for infra agents. |
+| [PACHAKUTlQ/ClaudeCage](https://github.com/PACHAKUTlQ/ClaudeCage) | 138 | Sandboxed runtime | Portable sandbox wrapper for Claude Code style workflows. |
+| [mattolson/agent-sandbox](https://github.com/mattolson/agent-sandbox) | 157 | Local sandbox | Local secure dev environment for agent collaboration. |
+
+### Evals, Reviewability, and Safety Probing
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [METR/vivaria](https://github.com/METR/vivaria) | 135 | Evaluation harness | METR's evaluation and elicitation research tooling; highly relevant for serious agent evaluation. |
+| [scabench-org/scabench](https://github.com/scabench-org/scabench) | 105 | Audit-agent eval | Framework for evaluating AI audit agents on recent real-world data. |
+| [philschmid/ai-agent-benchmark-compendium](https://github.com/philschmid/ai-agent-benchmark-compendium) | 112 | Benchmark index | Curated benchmark map for agent evaluation across coding, tool use, reasoning, and computer interaction. |
+| [arklexai/arksim](https://github.com/arklexai/arksim) | 112 | Error simulation / eval | Helps surface agent failures before they hit real users. |
+| [Mengmeara/agent-safe-probe-x](https://github.com/Mengmeara/agent-safe-probe-x) | 83 | Safety evaluation | Focused framework for automated safety evaluation of intelligent agents. |
+
+### UI, Desktop Shells, and Human-in-the-Loop Surfaces
+
+| Project | Stars | Layer | Why it matters |
+| --- | ---: | --- | --- |
+| [OpenSource03/harnss](https://github.com/OpenSource03/harnss) | 147 | Desktop harness shell | Desktop UI for Claude Code, Codex, and ACP-compatible agents with terminal, browser, Git, and MCP visualization. |
+| [EDEAI/OpenFlux](https://github.com/EDEAI/OpenFlux) | 173 | Desktop agent client | Slightly above the target range, but notable for long-term memory, browser automation, and tool orchestration in a local client. |
+
+## Suggested Build Stacks
+
+### 1. Minimal Coding Harness
+
+- [openai/codex](https://github.com/openai/codex) or [anomalyco/opencode](https://github.com/anomalyco/opencode)
+- [github/github-mcp-server](https://github.com/github/github-mcp-server)
+- [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
+- [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo)
+- [langfuse/langfuse](https://github.com/langfuse/langfuse)
+
+### 2. MCP-Native Harness
+
+- [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) or [lastmile-ai/mcp-agent](https://github.com/lastmile-ai/mcp-agent)
+- [modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol)
+- [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+- [mem0ai/mem0](https://github.com/mem0ai/mem0) or [getzep/graphiti](https://github.com/getzep/graphiti)
+- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix)
+
+### 3. Security-First Harness
+
+- [cline/cline](https://github.com/cline/cline) or [block/goose](https://github.com/block/goose)
+- [trailofbits/skills](https://github.com/trailofbits/skills)
+- [invariantlabs-ai/invariant](https://github.com/invariantlabs-ai/invariant)
+- [invariantlabs-ai/mcp-scan](https://github.com/invariantlabs-ai/mcp-scan)
+- [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo)
+
+## Selection Principles
+
+Projects are prioritized when they do one or more of the following:
+
+- implement a full harness runtime
+- expose a critical harness subsystem such as MCP, memory, sandboxing, or evals
+- act as an official spec, SDK, or registry
+- provide patterns that are widely reusable across agent stacks
+
+Projects are deprioritized when they are:
+
+- thin wrappers around proprietary services with little reusable harness value
+- abandoned experiments with no clear ecosystem relevance
+- one-off MCP servers that are better represented by a registry
+
+## Preserved Claude Skills Catalog
+
+The sections below are intentionally preserved from the original README so that the repository keeps its complete `Skills` catalog instead of dropping it.
 
 ## How Skills Work
 
@@ -87,7 +339,7 @@ Skills for working with complex file formats:
 
 > [!Warning]
 > Skills can execute arbitrary code in Claude's environment.
-> 
+>
 > See [Security & Best Practices](#-security--best-practices) for more information
 
 ### Collections & Libraries
@@ -97,12 +349,11 @@ Skills for working with complex file formats:
   - [superpowers-skills](https://github.com/obra/superpowers-skills) - Community-editable skills repository
   - [Blog: Superpowers](https://blog.fsck.com/2025/10/09/superpowers/) - Author's overview by Jesse Vincent
   - Installation: `/plugin marketplace add obra/superpowers-marketplace`
- 
+
 - **[obra/superpowers-lab](https://github.com/obra/superpowers-lab)** - Experimental skills for `Claude Code Superpowers` (see above)
   - Uses new techniques that are still being refined and tested (i.e. skills here may change over time)
   - [Blog post about its development](https://blog.fsck.com/2025/10/23/naming-claude-plugins/)
   - Install from `superpowers-marketplace` plugin
-
 
 ### Individual Skills
 
@@ -131,6 +382,7 @@ _More community skills coming soon! Submit a PR to add your skill._
 - **[Claude-to-IM](https://github.com/op7418/Claude-to-IM-skill)** - Bridge Claude Code / Codex to IM platforms — chat with AI coding agents from Telegram, Discord, Feishu/Lark, or QQ.
 
 ### UI
+
 - **[CodePilot](https://github.com/op7418/CodePilot)** - A desktop GUI for Claude Code — chat, code, and manage projects visually. Built with Electron + Next.js.
 
 ## ✏️ Creating Your First Skill
@@ -226,6 +478,7 @@ The easiest way to create a skill is to use the built-in `skill-creator`:
 - [Claude Cookbooks - Skills](https://github.com/anthropics/claude-cookbooks/tree/main/skills) - Example notebooks and tutorials
 
 ---
+
 ## 📅 Recent Updates
 
 ### November 2025
@@ -447,6 +700,21 @@ A: For skills from git repositories, pull the latest changes. For manually insta
 
 </details>
 
-## 🤝 Contributing
+## Related Research in This Repo
 
-Contributions welcome! See [contribution guidelines](CONTRIBUTING.md) for details. To add a skill or resource: fork, add to appropriate section, submit PR.
+- [research/agent-harness-architecture-2026.md](research/agent-harness-architecture-2026.md) - architecture blueprint and implementation guidance
+- [research/model-is-not-key-harness-is.md](research/model-is-not-key-harness-is.md) - Chinese synthesis of the 2026 harness engineering shift
+- [research/deep-research-report.md](research/deep-research-report.md) - supporting research notes
+
+## Contributing
+
+PRs are welcome. Please prefer:
+
+- official upstream repos over mirrors
+- registries over long-tail one-off entries when a category is exploding
+- concise descriptions that explain why a repo is harness-related
+- exact links to GitHub repos, not marketing pages
+
+If you are submitting a `Skill`, keep the original skill catalog conventions as well.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for submission guidance.
