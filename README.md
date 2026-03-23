@@ -325,6 +325,18 @@ Skills for working with complex file formats:
 - **[web-artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder)** - Build complex claude.ai HTML artifacts using React, Tailwind CSS, and shadcn/ui components
 - **[mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder)** - Guide for creating high-quality MCP servers to integrate external APIs and services
 - **[webapp-testing](https://github.com/anthropics/skills/tree/main/skills/webapp-testing)** - Test local web applications using Playwright for UI verification and debugging
+- **[oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)** - Multi-agent orchestration for Claude Code. Zero learning curve.
+- **[oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)** - Start Codex stronger, then let OMX add better prompts, workflows, and runtime help when the work grows.
+- **[oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)** - for opencode
+- **[planning-with-files](https://github.com/OthmanAdi/planning-with-files)** - Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.
+- **[ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)** - An AI SKILL that provide design intelligence for building professional UI/UX multiple platforms
+- **[Code Review Plugin](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review)** - Automated code review for pull requests using multiple specialized agents with confidence-based scoring to filter false positives.
+- **[code-simplifier](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier)** -
+- **[ralph-loop](https://awesomeclaude.ai/ralph-wiggum)** -
+- **[mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder)** - 
+- **[skillsmp](https://skillsmp.com/)** - 
+
+
 
 ### Communication
 
